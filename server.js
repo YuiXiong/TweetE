@@ -14,9 +14,10 @@ const pageController = require('./controllers/page_controller')
 //view engine
 app.set('view engine','ejs')
 
-//any route
+//user route
 app.get('/', pageController.showHome)
 app.get('/users/register',userController.showRegistrationForm)
+app.get('/users/login', userController.showLoginForm)
 
 app.listen(port, async() => {
     try{
