@@ -3,6 +3,7 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
+const userController = require('./controllers/users/users_controller')
 
 
 const app = express()
@@ -13,11 +14,14 @@ const pageController = require('./controllers/page_controller')
 //view engine
 app.set('view engine','ejs')
 
+//any route
 app.get('/', pageController.showHome)
+app.get('/users/register',userController.showRegistrationForm)
 
 app.listen(port, async() => {
     try{
         await mongoose.connect(connStr,{dbName:'TweetE'})
+        console.log('(^_^) DB connection success (^_^)')
     } catch(err){
         console.log('failed to connect to DB', `${err}`)
     }
