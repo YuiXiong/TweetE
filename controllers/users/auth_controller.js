@@ -1,5 +1,6 @@
 const userValidators = require('../../validators/users')
 const userModel = require('../../models/users/users')
+const postModel = require('../../models/users/userPosts')
 const bcrypt = require('bcrypt')
 
 const controller = {
@@ -38,7 +39,8 @@ const controller = {
             res.send('Error creating user')
             return
         }
-        res.redirect('users/login')
+        console.log('sign up successful')
+        res.redirect('/pages/login')
     },   
 
     showLoginForm:(req, res)=> {
@@ -79,10 +81,14 @@ const controller = {
                     res.send('unable to save session')
                     return
                 }
-                res.redirect('/users/profile')
+                console.log('log in successful')
+                res.redirect('/post')
             })
         })
-    }
-
+    },
+    // userIndex: (req, res) => {
+    //     res.render('users/userIndex')
+    // },
+    
 }
 module.exports = controller

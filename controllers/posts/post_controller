@@ -1,0 +1,27 @@
+const postModel = require('../../models/users/userPosts')
+
+const controller = {
+    
+    getTweetE: async(req,res) => {
+        const tweetE = await postModel.find().exec()
+        console.log(tweetE)
+        res.render('posts/post', {tweetE})
+    },
+
+    // userTweetE: async (req, res) => {
+    //     console.log('tweetE content here', req.body)
+    //     try{
+    //         await postModel.create({
+    //             postContent: req.body.tweetE,
+    //         })
+    //     } catch(err) {
+    //         console.log('error', err)
+    //         res.send('Error creating post on DB')
+    //         return
+    //     }
+    //     console.log('tweetE successful')
+    //     res.redirect('/users/userIndex')
+    // },   
+    
+}
+module.exports = controller

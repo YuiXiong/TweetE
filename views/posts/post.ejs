@@ -1,0 +1,19 @@
+<%- include('../partials/header'); %>
+
+   <h1> displaying TweetEs</h1>
+
+    <div id="page-products-list" class="container">
+      <div class="row my-5">
+          <% tweetE.forEach(item => { %>
+              <div class="col-4">
+                  <div class="card">
+                      <div class="card-body">
+                        <p class="card-text"><%= item.postContent %></a></p>
+                      </div>
+                  </div>
+              </div>
+          <% }) %> 
+      </div>
+  </div>
+
+<%- include('../partials/footer'); %>

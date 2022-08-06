@@ -1,0 +1,24 @@
+<%- include('../partials/header'); %>
+
+  <form class="w-full max-w-lg pl-8" id="tweetE" method="POST" action="/users/userIndex">
+   
+
+    <div class="flex flex-wrap -mx-3 mt-8 mb-6 pl-8">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+          TweetE the Happenings!
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+        id="tweetE" name="tweetE" type="tweetE" placeholder="What's happening?!">
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          TweetE
+      </button>
+    </div>
+</form>
+   <h1> There should have a container here for tweets</h1>
+
+<%- include('../partials/footer'); %>
