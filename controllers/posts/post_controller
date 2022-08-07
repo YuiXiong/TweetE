@@ -1,26 +1,37 @@
-const postModel = require('../../models/users/userPosts')
+const userModel = require("../../models/users/users");
+const postModel = require("../../models/users/userPosts");
+const { default: mongoose } = require("mongoose");
 
 const controller = {
-    
-    getTweetE: async(req,res) => {
-        const tweetE = await postModel.find().exec()
-        res.render('posts/post', {tweetE})
-    },
+  getAllTweetE: async (req, res) => {
+    const tweetE = await postModel.find().exec();
+    res.render("posts/post", { tweetE });
+  },
 
-    postTweetE: async (req, res) => {
-//        console.log('tweetE content here', req.body)
-        try{
-            await postModel.create({
-                postContent: req.body.tweetE,
-            })
-        } catch(err) {
-            console.log('error', err)
-            res.send('Error creating post on DB')
-            return
-        }
-        console.log('tweetE successful')
-        res.redirect('/post')
-    },   
-    
-}
-module.exports = controller
+  postTweetE: async (req, res) => {
+   console.log('tweetE content here', req.body)
+    try {
+      await postModel.create({
+        tweetEContent: req.body.tweetEContent,
+      });
+    } catch (err) {
+      console.log("error", err);
+      res.send("Error creating post on DB");
+      return;
+    }
+    console.log("tweetE very successful");
+    res.redirect("/post");
+  },
+
+  // getOneTweetE: async (req, res) => {
+  //   try {
+  //     const post = await PostModel.findById(req.params.postId);
+  //   } catch (err) {
+  //     console.log("error", err);
+  //     res.send("Error getting one post from DB");
+  //     return;
+  //   }
+  //   res.render("/post/show");
+  // },
+};
+module.exports = controller;

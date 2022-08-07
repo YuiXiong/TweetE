@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
   },
   userPost: {
     type: Schema.Types.ObjectId,
-    ref: 'UserPost',
+    ref: 'UserPost'
   }
   // admin: {
   //   type: Boolean,

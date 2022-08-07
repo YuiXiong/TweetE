@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
 const userPostSchema = new mongoose.Schema({
 
-  postContent: {
+  tweetEContent: {
     type: String,
     required: true,
-  }
-  
+  },
+
 });
 
 const UserPosts = mongoose.model('UserPost', userPostSchema)

@@ -11,6 +11,7 @@ const controller = {
 
     register: async (req, res) => {
         //validations
+        //to handle site not crashing when user nv enter a valid email
         // const validationResults = userValidators.registerValidator.validate(req.body)
         // if (validationResults.error){
         //     res.send(validationResults.error)

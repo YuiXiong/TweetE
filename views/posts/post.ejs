@@ -1,16 +1,14 @@
 <%- include('../partials/header'); %>
 
 <form class="w-full max-w-lg pl-8" id="tweetE" method="POST" action="/post">
-   
-
-    <div class="flex flex-wrap -mx-3 mt-8 mb-6 pl-8">
+       <div class="flex flex-wrap -mx-3 mt-8 mb-6 pl-8">
         <h1>tweet here</h1>
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
           TweetE the Happenings!
         </label>
         <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
-        id="tweetE" name="tweetE" type="tweetE" placeholder="What's happening?!">
+        id="tweetE" name="tweetEContent" type="tweetE" placeholder="What's happening?!">
       </div>
     </div>
 
@@ -20,19 +18,26 @@
       </button>
     </div>
 </form>
-   <h1> There should have a container here for tweets</h1>
+
+
+<h1> There should have a container here for tweets</h1>
    <h1> displaying TweetEs</h1>
 
     <div id="page-products-list" class="container">
       <div class="row my-5">
           <% tweetE.forEach(item => { %>
+            <form class="w-full max-w-lg pl-8" id="edit" method="PATCH" action="/post/:post"></form>
               <div class="col-4">
                   <div class="card">
                       <div class="card-body">
-                        <p class="card-text"><%= item.postContent %></a></p>
+                        <p class="card-text"><%= item.tweetEContent %></a></p>
                       </div>
+                      <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+                      </button>
                   </div>
+                </div>
               </div>
+            </form>
           <% }) %> 
       </div>
   </div>

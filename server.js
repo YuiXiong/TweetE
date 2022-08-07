@@ -31,8 +31,10 @@ app.get('/login', authController.showLoginForm)
 app.post('/login', authController.login)
 
 // posts route
-app.get('/post', postController.getTweetE)
+app.get('/post', postController.getAllTweetE)
 app.post('/post', postController.postTweetE )
+//app.get('post/:postId', postController.getOneTweetE)
+//app.patch('/post/:post_id', postController)
 //app.get('/user/userIndex/listTweetE', userController.listTweetE)
 
 app.listen(port, async() => {
