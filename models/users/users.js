@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -14,6 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userPost: {
+    type: Schema.Types.ObjectId,
+    ref: 'UserPost',
+  }
   // admin: {
   //   type: Boolean,
   //   required: true

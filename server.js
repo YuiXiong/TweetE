@@ -32,7 +32,7 @@ app.post('/login', authController.login)
 
 // posts route
 app.get('/post', postController.getTweetE)
-//app.post('/users/userIndex', userController.userTweetE )
+app.post('/post', postController.postTweetE )
 //app.get('/user/userIndex/listTweetE', userController.listTweetE)
 
 app.listen(port, async() => {

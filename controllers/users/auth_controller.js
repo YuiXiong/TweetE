@@ -40,7 +40,7 @@ const controller = {
             return
         }
         console.log('sign up successful')
-        res.redirect('/pages/login')
+        res.redirect('/login')
     },   
 
     showLoginForm:(req, res)=> {
