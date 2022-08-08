@@ -3,11 +3,6 @@ const postModel = require("../../models/users/userPosts");
 const mongoose = require('mongoose')
 
 const controller = {
-  getAllTweetE: async (req, res) => {
-    const tweetE = await postModel.find().exec();
-    res.render("posts/post", { tweetE });
-  },
-
   postTweetE: async (req, res) => {
     try {
       await postModel.create({
@@ -20,23 +15,37 @@ const controller = {
     //console.log("tweetE successful");
     res.redirect("/post");
   },
+  
+  getAllTweetE: async (req, res) => {
+    const tweetE = await postModel.find().exec();
+    res.render("posts/showall", { tweetE });
+  },
 
   //get one tweet using /post/:postid route to set up for editing tweet
   getOneTweetE: async (req, res) => {
     try {
       const post = await postModel.findById(req.params.postId);
-      res.render('posts/show', {post});
+      res.render('posts/showone', {post});
     } catch (err) {
       console.log("error", err);
       res.send("Error getting one post from DB");
       return;
     }
-    
   },
 
-  //edit tweet using patch route /post/:postid/edit
+  //edit tweet using patch route /post/:postId/
   editTweetE: async (req,res) => {
-    const updatedTweetE = await postModel.updateOne({ _id: req.params.id, tweetEContent}).exec()
+    try {
+    const post = await postModel.findById(req.params.postId);
+    console.log (post._id)
+    // const updatedTweetE = await postModel.findOneAndUpdate({ tweetEContent: req.body.updateTweetEContent})
+    await postModel.findByIdAndUpdate(req.params.postId,{tweetEContent: req.body.updateTweetEContent}) 
+      
+    
+    res.redirect("/post")
+  } catch(err) {
+    res.send("error with updating tweete")
+  }
   }
 };
 module.exports = controller;

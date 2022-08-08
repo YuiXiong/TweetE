@@ -31,11 +31,11 @@ app.get('/login', authController.showLoginForm)
 app.post('/login', authController.login)
 
 // posts route
-app.get('/post', postController.getAllTweetE)
 app.post('/post', postController.postTweetE )
+app.get('/post', postController.getAllTweetE)
 app.get('/post/:postId', postController.getOneTweetE)
-//app.patch('/post/:post_id', postController.editTweetE)
-//app.delete('post/:post_id, postController.deleteTweetE)
+app.post('/post/:postId', postController.editTweetE)
+//app.delete('post/:postId, postController.deleteTweetE)
 
 app.listen(port, async() => {
     try{
