@@ -7,6 +7,10 @@ const userPostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  tweetEAuthor: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User' 
+  }
 
 });
 

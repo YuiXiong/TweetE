@@ -1,6 +1,6 @@
 const userModel = require("../../models/users/users");
 const postModel = require("../../models/users/userPosts");
-const { default: mongoose } = require("mongoose");
+const mongoose = require('mongoose')
 
 const controller = {
   getAllTweetE: async (req, res) => {
@@ -9,29 +9,34 @@ const controller = {
   },
 
   postTweetE: async (req, res) => {
-   console.log('tweetE content here', req.body)
     try {
       await postModel.create({
         tweetEContent: req.body.tweetEContent,
       });
     } catch (err) {
-      console.log("error", err);
       res.send("Error creating post on DB");
       return;
     }
-    console.log("tweetE very successful");
+    //console.log("tweetE successful");
     res.redirect("/post");
   },
 
-  // getOneTweetE: async (req, res) => {
-  //   try {
-  //     const post = await PostModel.findById(req.params.postId);
-  //   } catch (err) {
-  //     console.log("error", err);
-  //     res.send("Error getting one post from DB");
-  //     return;
-  //   }
-  //   res.render("/post/show");
-  // },
+  //get one tweet using /post/:postid route to set up for editing tweet
+  getOneTweetE: async (req, res) => {
+    try {
+      const post = await postModel.findById(req.params.postId);
+      res.render('posts/show', {post});
+    } catch (err) {
+      console.log("error", err);
+      res.send("Error getting one post from DB");
+      return;
+    }
+    
+  },
+
+  //edit tweet using patch route /post/:postid/edit
+  editTweetE: async (req,res) => {
+    const updatedTweetE = await postModel.updateOne({ _id: req.params.id, tweetEContent}).exec()
+  }
 };
 module.exports = controller;

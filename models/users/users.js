@@ -19,10 +19,7 @@ const userSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: 'UserPost'
   }
-  // admin: {
-  //   type: Boolean,
-  //   required: true
-  // }
+
 });
 
 const User = mongoose.model('User', userSchema)
