@@ -27,7 +27,7 @@ app.use(sessions({
 
 //user Authetencation route
 app.get('/', pageController.showHome)
-app.get('/register',authController.showRegistrationForm)
+app.get('/register', authController.showRegistrationForm)
 app.post('/register', authController.register)
 app.get('/login', authController.showLoginForm)
 app.post('/login', authController.login)
@@ -37,7 +37,7 @@ app.post('/post', postController.postTweetE )
 app.get('/post', postController.getAllTweetE)
 app.get('/post/:postId', postController.getOneTweetE)
 app.patch('/post/:postId', postController.editTweetE)
-//app.delete('post/:postId', postController.deleteTweetE)
+app.delete('/post/:postId', postController.deleteTweetE)
 
 app.listen(port, async() => {
     try{
