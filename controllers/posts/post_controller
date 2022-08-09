@@ -12,7 +12,6 @@ const controller = {
       res.send("Error creating post on DB");
       return;
     }
-    //console.log("tweetE successful");
     res.redirect("/post");
   },
   

@@ -1,72 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- styles for signup page -->
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <title>
+      Welcome to TweetE. A micro blogging platform WITH an edit button
+    </title>
+  </head>
 
-    <title>Welcome to TweetE. A micro blogging platform WITH an edit button</title>
-</head>
-<body>
-
+  <div class="flex min-h-screen flex-col">
     <nav class="bg-violet-400 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-7">
-                    <div>
-                        <!-- Website Logo -->
-                        <a href="#" class="flex items-center py-4 px-2">
-                            <img src="/public/images/tweetE logo.png" alt="TweetE-Logo" class="h-8 w-8 mr-2">
-                        </a>
-                    </div>
-                    <!-- Primary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-1">
-                        <a href="" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</a>
-                        <a href="" class="py-4 px-2 text-black-800 font-semibold hover:text-yellow-500 transition duration-300">Services</a>
-                        <a href="" class="py-4 px-2 text-black-800 font-semibold hover:text-yellow-500 transition duration-300">About</a>
-                        <a href="" class="py-4 px-2 text-black-800 font-semibold hover:text-yellow-500 transition duration-300">Contact Us</a>
-                    </div>
-                </div>
-                <!-- Secondary Navbar items -->
-                <div class="hidden md:flex items-center space-x-3 ">
-                    <a href="/login"py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
-                    <a href="/register" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button class="outline-none mobile-menu-button">
-                    <svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
-                        x-show="!showMenu"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                </div>
+      <div class="mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-7">
+              <!-- Website Logo -->
+                <img
+                src="/images/tweetE logo.png"
+                alt="TweetE-Logo"
+                class="mt-3 mr-3 h-6 sm:h-10"
+                />
+                
+            <!-- Primary Navbar items -->
+            <div class="hidden items-center space-x-1 md:flex">
+              <a href="" class="border-b-4 border-green-500 py-4 px-2 font-semibold text-green-500">Home</a>
+              <a href="" class="text-black-800 py-4 px-2 font-semibold transition duration-300 hover:text-yellow-500">Services</a>
+              <a href="" class="text-black-800 py-4 px-2 font-semibold transition duration-300 hover:text-yellow-500">About</a>
+              <a href="" class="text-black-800 py-4 px-2 font-semibold transition duration-300 hover:text-yellow-500">Contact Us</a>
             </div>
+          </div>
+          <!-- Secondary Navbar items -->
+          <div class="hidden items-center space-x-3 md:flex">
+            <a href="/login" class="text-black-800 rounded py-2 px-2 font-medium transition duration-300 hover:bg-green-500 hover:text-white">Log In</a>
+            <a href="/register" class="rounded bg-green-500 py-2 px-2 font-medium text-white transition duration-300 hover:bg-green-400">Sign Up</a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="flex items-center md:hidden">
+            <button class="mobile-menu-button outline-none">
+              <svg
+                class="h-6 w-6 text-gray-500 hover:text-green-500"
+                x-show="!showMenu"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-        <!-- mobile menu -->
-        <div class="hidden mobile-menu">
-            <ul class="">
-                <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-                <li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-                <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-                <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
-            </ul>
-        </div>
+      </div>
+      <!-- mobile menu -->
+      <div class="mobile-menu hidden">
+        <ul class="">
+          <li class="active">
+            <a href="index.html" class="block bg-green-500 px-2 py-4 text-sm font-semibold text-white">Home</a>
+          </li>
+          <li>
+            <a href="#services" class="block px-2 py-4 text-sm transition duration-300 hover:bg-green-500">Services</a>
+          </li>
+          <li>
+            <a href="#about" class="block px-2 py-4 text-sm transition duration-300 hover:bg-green-500">About</a>
+          </li>
+          <li>
+            <a href="#contact" class="block px-2 py-4 text-sm transition duration-300 hover:bg-green-500">Contact Us</a>
+          </li>
+        </ul>
+      </div>
 
-        <!--JS for navbar show hide at mobile-->
-        <script>
-            const btn = document.querySelector("button.mobile-menu-button");
-            const menu = document.querySelector(".mobile-menu");
-            btn.addEventListener("click", () => {
-                menu.classList.toggle("hidden");
-            });
-        </script>
+      <!--JS for navbar show hide at mobile-->
+      <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+        btn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      </script>
     </nav>
+ 

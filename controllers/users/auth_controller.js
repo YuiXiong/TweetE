@@ -50,7 +50,6 @@ const controller = {
 
     login: async(req,res) => {
         const validatedResults =req.body
-        console.log('req.body aft button press:', validatedResults)
         let user = null
         
 
