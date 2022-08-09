@@ -35,17 +35,17 @@ const controller = {
 
   //edit tweet using patch route /post/:postId/
   editTweetE: async (req,res) => {
-    try {
     const post = await postModel.findById(req.params.postId);
-    console.log (post._id)
-    // const updatedTweetE = await postModel.findOneAndUpdate({ tweetEContent: req.body.updateTweetEContent})
-    await postModel.findByIdAndUpdate(req.params.postId,{tweetEContent: req.body.updateTweetEContent}) 
-      
-    
-    res.redirect("/post")
-  } catch(err) {
-    res.send("error with updating tweete")
-  }
-  }
+    if (post === null ){
+      res.send("no matching objectID")
+    }
+    try {
+      //const post = await postModel.findById(req.params.postId);
+      await postModel.findByIdAndUpdate(req.params.postId,{tweetEContent: req.body.updateTweetEContent}) 
+      res.redirect("/post")
+      } catch(err) {
+        res.send("error with updating tweete")
+      }
+   }
 };
 module.exports = controller;

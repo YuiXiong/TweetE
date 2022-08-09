@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const sessions = require('express-session')
+var methodOverride = require('method-override')
 
 const app = express()
 const port = 3000
@@ -15,6 +16,7 @@ app.set('view engine','ejs')
 
 //middlewares
 app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
 
 app.use(sessions({
     secret: process.env.SESSION_SECRET,
@@ -34,8 +36,8 @@ app.post('/login', authController.login)
 app.post('/post', postController.postTweetE )
 app.get('/post', postController.getAllTweetE)
 app.get('/post/:postId', postController.getOneTweetE)
-app.post('/post/:postId', postController.editTweetE)
-//app.delete('post/:postId, postController.deleteTweetE)
+app.patch('/post/:postId', postController.editTweetE)
+//app.delete('post/:postId', postController.deleteTweetE)
 
 app.listen(port, async() => {
     try{
