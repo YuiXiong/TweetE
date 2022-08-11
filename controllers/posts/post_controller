@@ -49,16 +49,16 @@ const controller = {
 
     //delete tweet using delete route /post/:postId/
     deleteTweetE: async (req,res) => {
-      const post = await postModel.findById(req.params.postId)
-      console.log(post)
+
       try {
+        const post = await postModel.findById(req.params.postId)
         await postModel.findByIdAndDelete(post)
         console.log('tweet deleted') 
         } catch(err) {
           res.send("error with deleting tweete")
         }
-        //res.redirect("/post")
+        res.redirect("/post")
      }
-
+  
 };
 module.exports = controller;
