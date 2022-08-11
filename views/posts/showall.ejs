@@ -1,15 +1,13 @@
 <%- include('../partials/header'); %>
 
-<body class="bg-fuchsia-200">
-
-  <div class="grid grid-cols -3 gap-1">
+  <div class="grid grid-cols-1 mx-auto gap-1">
     <div>
-      <form class="w-full max-w-lg pl-8" id="tweetE" method="POST" action="/post">
-          <div class="flex flex-wrap -mx-3 mt-8 mb-6 pl-4">
+      <form class="w-full max-w-lg" id="tweetE" method="POST" action="/post">
+          <div class="flex flex-wrap mt-8 mb-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
               TweetE the Happenings!
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white" 
             id="tweetE" name="tweetEContent" type="tweetE" placeholder="What's happening?!">
           </div>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"><a href="/post"></a>
@@ -18,17 +16,22 @@
       </form>
     </div>  
     
-
     <% tweetE.forEach(item => { %>
     <div class="max-w-sm rounded overflow-hidden shadow-lg py-3">
       <img class="w-full" src="/profile-pic" alt="USER NAME 1st stretch goals!">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2"><%= item.tweetEContent %></div>
+      <div class="px-3">
+        <div class="font-italic text-xl"><%= item.tweetEContent %></div>
       </div>
       <!-- hashtags here for future dec<div class="px-6 pt-4 pb-2">
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
       </div> -->
-    </div>
+      <!--buttons start here-->
+      <div class="flex justify-end "> 
+        <a href="/post/<%= item.id%>"><svg class="w-6 h-6  " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+        </path></svg></a>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+     </div>
+      </div>
     <% }) %>
   </div>
 
