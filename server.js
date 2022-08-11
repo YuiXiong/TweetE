@@ -6,7 +6,7 @@ const sessions = require('express-session')
 var methodOverride = require('method-override')
 
 const app = express()
-const port = proess.env.PORT || 3000
+const port = process.env.PORT || 3000
 const connStr = `mongodb+srv://${process.env.MONGOID}:${process.env.SECRET_KEY}@cluster0.wbryl.mongodb.net/?retryWrites=true&w=majority`
 const authController = require('./controllers/users/auth_controller')
 const pageController = require('./controllers/page_controller')
