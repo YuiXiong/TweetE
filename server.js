@@ -12,6 +12,7 @@ const authMiddleware = require("./middlewares/auth_middleware");
 const authController = require('./controllers/users/auth_controller')
 const pageController = require('./controllers/page_controller')
 const postController = require('./controllers/posts/post_controller')
+const commentController = require('./controllers/posts/comment_controller')
 //view engine
 app.set('view engine','ejs')
 
@@ -26,6 +27,10 @@ app.use(sessions({
     cookie: { secure: false, httpOnly: true, maxAge: 600000 }
 }))
 app.use(authMiddleware.setUserVaribleMiddleware);
+app.use(function(req, res, next) {
+    res.locals.user = req.session.user;
+    next();
+  });
 
 //user Authetencation route
 app.get('/', pageController.showHome)
@@ -41,6 +46,10 @@ app.get('/post', authMiddleware.authenticatedOnly, postController.getAllTweetE)
 app.get('/post/:postId', authMiddleware.authenticatedOnly, postController.getOneTweetE)
 app.patch('/post/:postId', authMiddleware.authenticatedOnly, postController.editTweetE)
 app.delete('/post/:postId', authMiddleware.authenticatedOnly, postController.deleteTweetE)
+
+//comment route
+app.post('/post/:postId/comment', authMiddleware.authenticatedOnly, commentController.postComment )
+//app.get('the /post/:postId/commentid', authMiddleware.authenticatedOnly, commentController.getAllComment)
 
 app.listen(port, async() => {
     try{

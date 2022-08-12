@@ -1,12 +1,17 @@
-const userModel = require("../../models/users/users");
+const UserModel = require("../../models/users/users");
 const postModel = require("../../models/users/userPosts");
 const mongoose = require('mongoose')
 
 const controller = {
   postTweetE: async (req, res) => {
-    try {
+    try {    
+     // const author = await Users.findById(req.session.currentUser)
+     // const author = res.locals.user._id;
+      //postModel.tweetEAuthor=author._id
+     //console.log('author:', author)
       await postModel.create({
         tweetEContent: req.body.tweetEContent,
+        //tweetEAuthor: mongoose.Types.ObjectId(author)
       });
     } catch (err) {
       res.send("Error creating post on DB");
@@ -57,7 +62,7 @@ const controller = {
         } catch(err) {
           res.send("error with deleting tweete")
         }
-        res.redirect("/")
+        res.redirect("/post")
      }
   
 };
