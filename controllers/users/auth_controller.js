@@ -27,7 +27,7 @@ const controller = {
 
         // //hashing the password
         //const hash = await bcrypt.hash(validatedResilts.password, 10)
-        console.log('req.body here', req.body)
+        // console.log('req.body here', req.body)
         const hash=await bcrypt.hash(req.body.password, 10)
         try{
             await userModel.create({

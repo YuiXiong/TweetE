@@ -39,4 +39,5 @@ Attempts was made to create user register and sign in first. CRUD was attempted 
 
 ## Wins
 - Finding comfort in an uncomfortable zone.
-- Noticeable difference with volume of code produced compared to project 1.
+- Noticeable difference with volume of features produced compared to project 1.
+- troubleshotting the current stack gets easier along the way
