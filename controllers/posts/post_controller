@@ -57,7 +57,7 @@ const controller = {
         } catch(err) {
           res.send("error with deleting tweete")
         }
-        res.redirect("/post")
+        res.redirect("/")
      }
   
 };

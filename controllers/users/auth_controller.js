@@ -86,9 +86,23 @@ const controller = {
             })
         })
     },
-    // userIndex: (req, res) => {
-    //     res.render('users/userIndex')
-    // },
-    
+
+    logout: async (req, res) => {
+        req.session.user = null   
+        req.session.save(function (err) {
+            if (err) {
+                res.redirect('/')
+                return;
+                }
+            // regenerate the session, to guard against forms of session fixation
+            req.session.regenerate(function (err) {
+            if (err) {
+                res.redirect('/')
+                return;
+                }
+                res.redirect('/')
+            })
+        });
+    }
 }
 module.exports = controller

@@ -8,6 +8,7 @@ var methodOverride = require('method-override')
 const app = express()
 const port = process.env.PORT || 3000
 const connStr = `mongodb+srv://${process.env.MONGOID}:${process.env.SECRET_KEY}@cluster0.wbryl.mongodb.net/?retryWrites=true&w=majority`
+const authMiddleware = require("./middlewares/auth_middleware");
 const authController = require('./controllers/users/auth_controller')
 const pageController = require('./controllers/page_controller')
 const postController = require('./controllers/posts/post_controller')
@@ -18,27 +19,28 @@ app.set('view engine','ejs')
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
-
 app.use(sessions({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, httpOnly: true, maxAge: 600000 }
 }))
+app.use(authMiddleware.setUserVaribleMiddleware);
 
 //user Authetencation route
 app.get('/', pageController.showHome)
-app.get('/register', authController.showRegistrationForm)
+//app.get('/register', authController.showRegistrationForm) //shifted to homepage
 app.post('/register', authController.register)
 app.get('/login', authController.showLoginForm)
 app.post('/login', authController.login)
+app.post('/logout', authController.logout)
 
 // posts route
-app.post('/post', postController.postTweetE )
-app.get('/post', postController.getAllTweetE)
-app.get('/post/:postId', postController.getOneTweetE)
-app.patch('/post/:postId', postController.editTweetE)
-app.delete('/post/:postId', postController.deleteTweetE)
+app.post('/post', authMiddleware.authenticatedOnly, postController.postTweetE )
+app.get('/post', authMiddleware.authenticatedOnly, postController.getAllTweetE)
+app.get('/post/:postId', authMiddleware.authenticatedOnly, postController.getOneTweetE)
+app.patch('/post/:postId', authMiddleware.authenticatedOnly, postController.editTweetE)
+app.delete('/post/:postId', authMiddleware.authenticatedOnly, postController.deleteTweetE)
 
 app.listen(port, async() => {
     try{

@@ -1,14 +1,17 @@
 module.exports = {
     authenticatedOnly: (req, res, next) => {
-      // if session is valid, go to the next stage
-      if (req?.session?.currentUser) {
-        next();
-        return;
+      if (!req.session.user) {
+          res.redirect('/login')
+          return
       }
-      res.redirect("/post");
-    },
-    setGlobalUserVariableMiddleware: (req, res, next) => {
-      res.locals.authUser = req?.session?.currentUser;
-      next();
-    },
-  };
+      next()
+  },
+    setUserVaribleMiddleware: (req, res, next) => {
+      res.locals.authUser = null
+      if (req.session.user) {
+          res.locals.authUser = req.session.user
+      }
+      next()
+  }
+
+}
